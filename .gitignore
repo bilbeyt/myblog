@@ -55,3 +55,9 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# bilbeyt
+
+myblog/local_settings.py
+db.sqlite3
+public/
