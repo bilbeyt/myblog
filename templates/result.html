@@ -1,0 +1,18 @@
+
+
+{% block content %}
+
+
+  {% if latest_entry_list %}
+
+    {% for Entry in latest_entry_list %}
+    <h2 class="blog-post-title">{{ Entry.title}}</h2>
+      <p class="blog-post-meta">{{Entry.pub_date}} by {{Entry.name}}</p>
+    {{ Entry_id }} {{ Entry.content }}
+    {% endfor %}
+
+{% else %}
+    <p>No entry is available.</p>
+{% endif %}
+
+  {% endblock content %}
