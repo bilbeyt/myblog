@@ -8,10 +8,15 @@ from django.views.generic.list import ListView
 import datetime
 
 
+
+
+
+
 class EntryFormView(ListView):
     form_class= EntryCreateForm
     initial= { 'key': 'value'}
     template_name="index.html"
+
 
     def get(self,request,*args,**kwargs):
         form = self.form_class(initial=self.initial)
