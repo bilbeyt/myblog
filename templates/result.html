@@ -3,16 +3,16 @@
 {% block content %}
 
 
-  {% if latest_comment_list %}
+  {% if latest_entry_list %}
 
-    {% for Comments in latest_comment_list %}
-    <h2 class="blog-post-title">{{ Comments.title}}</h2>
-      <p class="blog-post-meta">{{Comments.pub_date}} by {{Comments.name}}</p>
-    {{ Comments_id }} {{ Comments.content }}
+    {% for Entry in latest_entry_list %}
+    <h2 class="blog-post-title">{{ Entry.title}}</h2>
+      <p class="blog-post-meta">{{Entry.pub_date}} by {{Entry.name}}</p>
+    {{ Entry_id }} {{ Entry.content }}
     {% endfor %}
 
 {% else %}
-    <p>No polls are available.</p>
+    <p>No entry are available.</p>
 {% endif %}
 
   {% endblock content %}
