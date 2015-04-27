@@ -43,7 +43,7 @@ class EntryFormView(ListView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        if not self.request.user.is_staff or not self.request.user.is_superuser:
+        if not self.request.user.is_authenticated:
             raise PermissionDenied
         return super(EntryFormView, self).dispatch(*args, **kwargs)
     def get(self,request,*args,**kwargs):
