@@ -1,8 +1,17 @@
 from django import forms
 from .models import Entry
-import datetime
+
 
 class EntryCreateForm(forms.ModelForm):
     class Meta:
         model = Entry
         fields = ('name','title','content')
+
+class EntryUpdateForm(forms.ModelForm):
+
+    class Meta:
+        model = Entry
+        fields = ('title','content')
+
+    def __init__(self, *args, **kwargs):
+        super(EntryUpdateForm, self).__init__(*args, **kwargs)

@@ -1,0 +1,4 @@
+SlugField
+{% url "" %}
+delete view
+update view

@@ -1,5 +1,4 @@
-
-{% load static bootstrap3 %}
+{% load static bootstrap3%}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,25 +22,35 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-<body>
-      <div class="blog-masthead">
-        <div class="container">
-          <nav class="blog-nav">
-            <a class="blog-nav-item active" href="http://localhost:8000/">Home</a>
-          
-          </nav>
-        </div>
+  <body>
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+         <a class="blog-nav-item active" href="{% url 'base' %}">Home</a>
+         {% if user.is_anonymous %}
+          <a class="blog-nav-item active" href="{% url 'login' %}">LOGİN</a>
+          {% endif %}
+          {%if user.is_authenticated %}
+          <a class="blog-nav-item active" href="{% url 'index' %}">Post</a>
+          <a class="blog-nav-item active" href="{% url 'realout' %}">Logout</a>
+          {% endif %}
+        </nav>
       </div>
+    </div>
+
   <div class="page-header">
-    <h1>Contact Form</h1>
+    <h1>Delete Entry</h1>
   </div>
+
   {% bootstrap_messages %}
   <form action="" method="post" class="form">
-      {% csrf_token %}
-      {% bootstrap_form form %}
-      {% buttons %}
-      <button type="submit" class="btn btn-primary">Submit</button>
-      {% endbuttons %}
-</form>
+    {% csrf_token %}
+    <div class="alert alert-info">
+    You are about to delete {{ object }}. Are you sure?</div>
+    {% buttons %}
+    <button type="submit" class="btn btn-primary">Confirm
+    </button>
+    {% endbuttons %}
+  </form>
   </body>
-  </html>
+</html>

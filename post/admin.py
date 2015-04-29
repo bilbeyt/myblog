@@ -2,7 +2,6 @@ from django.contrib import admin
 from .models import Entry
 
 
-
 class EntryAdmin(admin.ModelAdmin):
     fields = ['name','title','content','pub_date']
     list_display = ('name','title','pub_date','was_published_recently')
