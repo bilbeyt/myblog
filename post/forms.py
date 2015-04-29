@@ -5,7 +5,7 @@ from .models import Entry
 class EntryCreateForm(forms.ModelForm):
     class Meta:
         model = Entry
-        fields = ('name','title','content')
+        fields = ('title','content')
 
 class EntryUpdateForm(forms.ModelForm):
 

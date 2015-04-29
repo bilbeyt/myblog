@@ -55,8 +55,8 @@
     </div>
     {% bootstrap_messages %}
     <div>
-      <h3><strong>Name</strong></h3>
-      <p>{{ object.name }}</p>
+      <h3><strong>Author</strong></h3>
+      <p>{{ object.author }}</p>
       <h3><strong>Title</strong></h3>
       <p>{{ object.title }}</p>
       <h3><strong>Content</strong></h3>
@@ -64,14 +64,14 @@
     </div>
 
 
-
+{% if object.author == request.user %}
     <div style="margin-top: 10px;">
-      <a class="btn btn-primary" href="{% url 'entry_update' object.id %}" role="button" >Update
+      <a class="btn btn-primary" href="{% url 'entry_update' object.slug %}" role="button" >Update
       </a>
-      <a class="btn btn-danger" href="{% url 'entry_delete' object.id %}" role="button">Delete
+      <a class="btn btn-danger" href="{% url 'entry_delete' object.slug %}" role="button">Delete
       </a>
       </div>
-
+{% endif %}
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{% static "JS/ie10-viewport-bug-workaround.js" %}"></script>

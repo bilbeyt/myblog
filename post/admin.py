@@ -3,10 +3,10 @@ from .models import Entry
 
 
 class EntryAdmin(admin.ModelAdmin):
-    fields = ['name','title','content','pub_date']
-    list_display = ('name','title','pub_date','was_published_recently')
-    list_filter = ['pub_date','name']
-    search_fields = ['name','title']
+    fields = ['author','title','content']
+    list_display = ('author','title','pub_date')
+    list_filter = ['pub_date','author']
+    search_fields = ['author','title']
 
 
 

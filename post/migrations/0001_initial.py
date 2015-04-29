@@ -2,12 +2,13 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
-import datetime
+from django.conf import settings
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
@@ -16,9 +17,10 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('content', models.TextField()),
-                ('pub_date', models.DateTimeField(default=datetime.datetime(2015, 4, 25, 8, 51, 58, 71532), verbose_name=b'Publish time')),
-                ('name', models.CharField(max_length=100)),
+                ('pub_date', models.DateTimeField(auto_now_add=True)),
                 ('title', models.CharField(max_length=100)),
+                ('slug', models.SlugField(max_length=100)),
+                ('author', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

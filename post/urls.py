@@ -14,8 +14,8 @@ urlpatterns = [
     url(r'out/$', views.custom_logout, name="out"),
     url(r'loggedin/$', views.loggedin, name="successfullog"),
     url(r'auth/$', views.auth_view ,name="auth"),
-    url(r'^(?P<pk>\d+)/update/$', EntryUpdateView.as_view(),
+    url(r'^(?P<slug>[\w-]+)/update/$', EntryUpdateView.as_view(),
         name='entry_update'),
-    url(r'^(?P<pk>\d+)/$', EntryDetailView.as_view(),name='entry_detail'),
-     url(r'^(?P<pk>\d+)/delete/$', EntryDeleteView.as_view(), name='entry_delete'),
+    url(r'^(?P<slug>[\w-]+)/$', EntryDetailView.as_view(),name='entry_detail'),
+     url(r'^(?P<slug>[\w-]+)/delete/$', EntryDeleteView.as_view(), name='entry_delete'),
 ]

@@ -7,7 +7,8 @@
 
     {% for Entry in latest_entry_list %}
     <h2 class="blog-post-title">{{ Entry.title}}</h2>
-    <a href="{% url "entry_detail" Entry.pk %}">Click to see detail</a>
+    
+    <a href="{% url "entry_detail" Entry.slug %}">Click to see detail</a>
       <p class="blog-post-meta">{{Entry.pub_date}} by {{Entry.name}}</p>
     {{ Entry_id }} {{ Entry.content }}
     {% endfor %}
