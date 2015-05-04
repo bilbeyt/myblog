@@ -9,5 +9,4 @@ class EntryAdmin(admin.ModelAdmin):
     search_fields = ['author','title']
 
 
-
 admin.site.register(Entry,EntryAdmin)

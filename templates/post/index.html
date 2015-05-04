@@ -27,6 +27,7 @@
       <div class="container">
         <nav class="blog-nav">
           <a class="blog-nav-item active" href="{% url 'base' %}">Home</a>
+          <a style="float:right" class="blog-nav-item active"><strong>User: </strong>{{request.user}}</a>
         </nav>
       </div>
     </div>

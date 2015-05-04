@@ -7,8 +7,8 @@ class EntryCreateForm(forms.ModelForm):
         model = Entry
         fields = ('title','content')
 
-class EntryUpdateForm(forms.ModelForm):
 
+class EntryUpdateForm(forms.ModelForm):
     class Meta:
         model = Entry
         fields = ('title','content')
