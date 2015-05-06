@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import tempfile
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -39,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'bootstrap3',
     'post',
+    'ckeditor',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -51,6 +53,13 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 )
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'basic',
+          'width': 937,
+    },
+}
 
 ROOT_URLCONF = 'myblog.urls'
 
@@ -102,10 +111,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-
 STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, os.pardir, "public", "static"))
-
-
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.abspath(
+    os.path.join(BASE_DIR, os.pardir, "public", "media"))
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_IMAGE_BACKEND = "pillow"
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'

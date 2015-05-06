@@ -39,6 +39,7 @@ def auth_view(request):
     else:
        return HttpResponseRedirect("login/")
 
+
 class EntryCreateView(CreateView):
     model = Entry
     form_class = EntryCreateForm
@@ -73,6 +74,7 @@ class EntryView(ListView):
         context = super(EntryView, self).get_context_data(**kwargs)
         context['latest_entry_list'] = Entry.objects.order_by('-pub_date')
         return context
+
 
 class EntryDetailView(DetailView):
     model = Entry

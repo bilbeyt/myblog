@@ -2,15 +2,14 @@
 {% load staticfiles bootstrap3%}
 {% block title %}{{object.title}}{% endblock %}
 {% block content %}
-  <body>
     <div class="container">
       <div class="page-header">
         <h1>{{object.title}} <small>{{object.author}}, {{object.pub_date}}</small> </h1>
       </div>
       {% bootstrap_messages %}
-      <h2>{{object.content}}</h2>
+      <h2>{{object.content|safe}}</h2>
       {% if object.author == request.user %}
-      <div style="margin-top: 10px;">
+      <div style="margin-top: 50px;">
         <a class="btn btn-primary" href="{% url 'entry_update' object.slug %}" role="button" >Update
         </a>
         <a class="btn btn-danger" href="{% url 'entry_delete' object.slug %}" role="button">Delete
@@ -18,4 +17,12 @@
       </div>
       {% endif %}
     </div>
+{% endblock %}
+{% block blog-footer %}
+    <footer class="blog-footer">
+      <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
 {% endblock %}
