@@ -38,10 +38,16 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'bootstrap3',
     'post',
     'ckeditor',
+    'disqus',
 )
+
+SITE_ID = 1
+DISQUS_API_KEY = 'wNJT2CT7lW3HRoHk1vLZW1IODEkn7oEb2FxFFGAbpUthyyLbD1zdMTFomlbUeTPf'
+DISQUS_WEBSITE_SHORTNAME = 'bilbeyt-blog'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

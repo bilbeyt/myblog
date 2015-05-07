@@ -1,4 +1,5 @@
 {% load static bootstrap3 %}
+{% load disqus_tags %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,6 +12,7 @@
     <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
     <link href="{% static "css/blog.css" %}" rel="stylesheet">
     <script src="{% static "JS/ie-emulation-modes-warning.js" %}"></script>
+    {% set_disqus_developer 1 %}
   </head>
   <body>
     <div class="blog-masthead">

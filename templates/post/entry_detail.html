@@ -1,5 +1,6 @@
 {% extends "post/base.html" %}
 {% load staticfiles bootstrap3%}
+{% load disqus_tags %}
 {% block title %}{{object.title}}{% endblock %}
 {% block content %}
     <div class="container">
@@ -7,7 +8,7 @@
         <h1>{{object.title}} <small>{{object.author}}, {{object.pub_date}}</small> </h1>
       </div>
       {% bootstrap_messages %}
-      <h2>{{object.content|safe}}</h2>
+      {{object.content|safe}}
       {% if object.author == request.user %}
       <div style="margin-top: 50px;">
         <a class="btn btn-primary" href="{% url 'entry_update' object.slug %}" role="button" >Update
@@ -17,6 +18,21 @@
       </div>
       {% endif %}
     </div>
+
+    <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES * * */
+        var disqus_shortname = 'tolgablog';
+        var disqus_url = '{{ site.url }}{{ page.url }}';
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
 {% endblock %}
 {% block blog-footer %}
     <footer class="blog-footer">
