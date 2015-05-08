@@ -45,6 +45,10 @@ INSTALLED_APPS = (
     'disqus',
 )
 
+FILE_UPLOAD_HANDLERS = (
+"django.core.files.uploadhandler.MemoryFileUploadHandler",
+"django.core.files.uploadhandler.TemporaryFileUploadHandler",)
+
 SITE_ID = 1
 DISQUS_API_KEY = 'wNJT2CT7lW3HRoHk1vLZW1IODEkn7oEb2FxFFGAbpUthyyLbD1zdMTFomlbUeTPf'
 DISQUS_WEBSITE_SHORTNAME = 'bilbeyt-blog'
@@ -64,6 +68,7 @@ CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'basic',
           'width': 937,
+          'removePlugins' : 'stylesheetparser',
     },
 }
 
@@ -122,8 +127,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.abspath(
-    os.path.join(BASE_DIR, os.pardir, "public", "media"))
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_IMAGE_BACKEND = "pillow"

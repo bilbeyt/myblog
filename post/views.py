@@ -55,13 +55,16 @@ class EntryCreateView(CreateView):
         return render(request, self.template_name, {'form' : form})
 
     def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
+        form = self.form_class(request.POST, request.FILES)
 
-        if form.is_valid():
+        if form.is_valid() and not Entry.objects.all().filter(title=form.instance.title):
             instance = form.instance
             instance.author = self.request.user
             instance.save()
             return HttpResponseRedirect('/')
+        else:
+            messages.error(self.request, "Invalid title")
+            return HttpResponseRedirect("")
         return render(request, self.template_name, {'form' : form})
 
 
@@ -94,7 +97,12 @@ class EntryUpdateView(UpdateView):
         return super(EntryUpdateView, self).dispatch(*args, **kwargs)
 
     def form_valid(self, form):
-        return super(EntryUpdateView, self).form_valid(form)
+        if not Entry.objects.all().filter(title=form.instance.title):
+            return super(EntryUpdateView, self).form_valid(form)
+        else:
+            messages.error(self.request, "Invalid title")
+            return HttpResponseRedirect("")
+
 
 
 class EntryDeleteView(DeleteView):

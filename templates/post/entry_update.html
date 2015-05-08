@@ -4,9 +4,9 @@
 {% block content %}
 <div class ="container">
   <div class="page-header">
-    <h1>Update Entry<strong> {{ object.name }}</strong></h1>
+    <h1>Update Entry</h1>
+    <p>Make sure the title does not exist in that case save is not complete<p>
   </div>
-  {% bootstrap_messages %}
   <form enctype="multipart/form-data" action="" method="post" class="form">
     {% csrf_token %}
     {{ form.media }}

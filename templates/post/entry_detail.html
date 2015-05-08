@@ -8,6 +8,9 @@
         <h1>{{object.title}} <small>{{object.author}}, {{object.pub_date}}</small> </h1>
       </div>
       {% bootstrap_messages %}
+      {% if object.file %}
+      <a href="/media/{{object.file}}">File</a>
+      {% endif %}
       {{object.content|safe}}
       {% if object.author == request.user %}
       <div style="margin-top: 50px;">
@@ -18,7 +21,7 @@
       </div>
       {% endif %}
     </div>
-
+  <hr>
     <div id="disqus_thread"></div>
       <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES * * */
