@@ -1,18 +1,18 @@
 {% extends "post/base.html" %}
-{% load staticfiles bootstrap3 %}
-{% block title %}Update Entry{% endblock %}
+{% load i18n staticfiles bootstrap3 %}
+{% block title %}{% trans "Update Entry" %}{% endblock %}
 {% block content %}
 <div class ="container">
   <div class="page-header">
-    <h1>Update Entry</h1>
-    <p>Make sure the title does not exist in that case save is not complete<p>
+    <h1>{% trans "Update Entry" %}</h1>
+    <p>{% trans "Make sure the title does not exist in that case save is not complete" %}<p>
   </div>
   <form enctype="multipart/form-data" action="" method="post" class="form">
     {% csrf_token %}
     {{ form.media }}
     {% bootstrap_form form %}
     {% buttons %}
-    <button type="submit" class="btn btn-primary">Update
+    <button type="submit" class="btn btn-primary">{% trans "Update" %}
     </button>
     {% endbuttons %}
   </form>

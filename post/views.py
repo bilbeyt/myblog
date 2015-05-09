@@ -12,6 +12,7 @@ from django.core.context_processors import csrf
 from django.template.defaultfilters import slugify
 from django.core.urlresolvers import reverse_lazy
 from django.contrib import messages
+from django.utils.translation import ugettext_lazy as _
 from .models import Entry
 from .forms import EntryCreateForm, EntryUpdateForm
 
@@ -19,13 +20,13 @@ from .forms import EntryCreateForm, EntryUpdateForm
 def custom_login(request, *args, **kwargs):
     c = {}
     c.update(csrf(request))
-    messages.success(request,"You are successfully logged in")
+    messages.success(request, _("You are successfully logged in"))
     return render_to_response('post/login.html', c)
 
 def custom_logout(request):
     logout(request)
     messages.success(
-        request, "You have logged out successfully.")
+        request, _("You have logged out successfully."))
     return HttpResponseRedirect("/")
 
 def auth_view(request):
@@ -63,7 +64,7 @@ class EntryCreateView(CreateView):
             instance.save()
             return HttpResponseRedirect('/')
         else:
-            messages.error(self.request, "Invalid title")
+            messages.error(self.request, _("Invalid title"))
             return HttpResponseRedirect("")
         return render(request, self.template_name, {'form' : form})
 
@@ -99,8 +100,10 @@ class EntryUpdateView(UpdateView):
     def form_valid(self, form):
         if not Entry.objects.all().filter(title=form.instance.title):
             return super(EntryUpdateView, self).form_valid(form)
+        elif self.get_object().title == form.instance.title:
+            return super(EntryUpdateView, self).form_valid(form)
         else:
-            messages.error(self.request, "Invalid title")
+            messages.error(self.request, _("Invalid title"))
             return HttpResponseRedirect("")
 
 

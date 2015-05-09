@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('post.urls')),
     url(r'^ckeditor/', include('ckeditor.urls')),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
 )
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

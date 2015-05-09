@@ -1,5 +1,5 @@
 {% extends "post/base.html" %}
-{% load staticfiles bootstrap3%}
+{% load i18n staticfiles bootstrap3%}
 {% load disqus_tags %}
 {% block title %}{{object.title}}{% endblock %}
 {% block content %}
@@ -8,15 +8,16 @@
         <h1>{{object.title}} <small>{{object.author}}, {{object.pub_date}}</small> </h1>
       </div>
       {% bootstrap_messages %}
-      {% if object.file %}
-      <a href="/media/{{object.file}}">File</a>
-      {% endif %}
       {{object.content|safe}}
+      <hr>
+      {% if object.file %}
+      <a href="/media/{{object.file}}">{% trans "File" %}</a>
+      {% endif %}
       {% if object.author == request.user %}
       <div style="margin-top: 50px;">
-        <a class="btn btn-primary" href="{% url 'entry_update' object.slug %}" role="button" >Update
+        <a class="btn btn-primary" href="{% url 'entry_update' object.slug %}" role="button" >{% trans "Update" %}
         </a>
-        <a class="btn btn-danger" href="{% url 'entry_delete' object.slug %}" role="button">Delete
+        <a class="btn btn-danger" href="{% url 'entry_delete' object.slug %}" role="button">{% trans "Delete" %}
         </a>
       </div>
       {% endif %}
@@ -39,9 +40,9 @@
 {% endblock %}
 {% block blog-footer %}
     <footer class="blog-footer">
-      <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p>{% trans "Blog template built for" %}<a href="http://getbootstrap.com">Bootstrap</a> {% trans "by" %}<a href="https://twitter.com/mdo">@mdo</a>.</p>
       <p>
-        <a href="#">Back to top</a>
+        <a href="#">{% trans "Back to top" %}</a>
       </p>
     </footer>
 {% endblock %}

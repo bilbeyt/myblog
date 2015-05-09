@@ -1,20 +1,20 @@
 {% extends "post/base.html" %}
-{% load static bootstrap3%}
-{% block title %}Delete Entry{% endblock %}
+{% load i18n static bootstrap3%}
+{% block title %}{% trans "Delete Entry" %}{% endblock %}
 {% block content %}
 <div class="container">
   <div class="page-header">
-    <h1>Delete Entry</h1>
+    <h1>{% trans "Delete Entry" %}</h1>
   </div>
   {% bootstrap_messages %}
   <form action="" method="post" class="form">
    {% csrf_token %}
    <br>
    <div class="alert alert-info">
-    You are about to delete {{object.title}}. Are you sure?
+    {% trans "You are about to delete" %} {{object.title}}. {% trans "Are you sure?" %}
    </div>
     {% buttons %}
-   <button type="submit" class="btn btn-primary">Confirm</button>
+   <button type="submit" class="btn btn-primary">{% trans "Confirm" %}</button>
     {% endbuttons %}
   </form>
 </div>
