@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-09 10:49+0300\n"
+"POT-Creation-Date: 2015-05-23 18:29+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,148 +18,152 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: myblog/settings.py:63 templates/post/base.html:28
+#: myblog/settings.py:63
 msgid "Turkish"
-msgstr "Türkçe"
+msgstr ""
 
 #: myblog/settings.py:64
 msgid "English"
-msgstr "İngilizce"
+msgstr ""
 
 #: post/models.py:13
 msgid "title"
-msgstr "Başlık"
+msgstr ""
 
 #: post/models.py:14
 msgid "content"
-msgstr "içerik"
+msgstr ""
 
 #: post/models.py:15
 msgid "publish time"
-msgstr "yayın tarihi"
+msgstr ""
 
 #: post/models.py:18
 msgid "file"
-msgstr "dosya"
+msgstr ""
 
 #: post/views.py:23
 msgid "You are successfully logged in"
-msgstr "Başarıyla giriş yaptınız"
+msgstr ""
 
 #: post/views.py:29
 msgid "You have logged out successfully."
-msgstr "Başarıyla çıkış yaptınız"
+msgstr ""
 
 #: post/views.py:67 post/views.py:106
 msgid "Invalid title"
-msgstr "Geçersiz başlık"
-
-#: templates/post/base.html:21
-msgid "Home"
-msgstr "Giriş"
-
-#: templates/post/base.html:22
-msgid "New Post"
-msgstr "Yeni Ileti"
+msgstr ""
 
 #: templates/post/base.html:24
+msgid "Home"
+msgstr ""
+
+#: templates/post/base.html:25
+msgid "New Post"
+msgstr ""
+
+#: templates/post/base.html:26
+msgid "Türkçe"
+msgstr ""
+
+#: templates/post/base.html:28
 msgid "Login"
-msgstr "Giriş"
+msgstr ""
 
-#: templates/post/base.html:27
+#: templates/post/base.html:31
 msgid "Logout"
-msgstr "Çıkış"
+msgstr ""
 
-#: templates/post/base.html:35
+#: templates/post/base.html:32
 msgid "User"
-msgstr "Kullanıcı"
-
-#: templates/post/base.html:47
-msgid "tr"
-msgstr "Türkçe"
+msgstr ""
 
 #: templates/post/entry_confirm_delete.html:3
 #: templates/post/entry_confirm_delete.html:7
 msgid "Delete Entry"
-msgstr "İleti Silme"
+msgstr ""
 
 #: templates/post/entry_confirm_delete.html:14
 msgid "You are about to delete"
-msgstr "Silmek üzeresiniz"
+msgstr ""
 
 #: templates/post/entry_confirm_delete.html:14
 msgid "Are you sure?"
-msgstr "Emin misiniz?"
+msgstr ""
 
 #: templates/post/entry_confirm_delete.html:17
 msgid "Confirm"
-msgstr "Onayla"
+msgstr ""
 
 #: templates/post/entry_create.html:3 templates/post/entry_create.html.py:7
 msgid "Post"
-msgstr "Gönder"
+msgstr ""
 
 #: templates/post/entry_create.html:8 templates/post/entry_update.html:8
 msgid "Make sure the title does not exist in that case save is not complete"
-msgstr "Başlığın olmadığından emin olun aksi takdirde kaydolmayacaktır"
+msgstr ""
 
 #: templates/post/entry_create.html:15
 msgid "Submit"
-msgstr "Onayla"
+msgstr ""
 
 #: templates/post/entry_detail.html:14
 msgid "File"
-msgstr "Dosya"
+msgstr ""
 
 #: templates/post/entry_detail.html:18 templates/post/entry_update.html:15
 msgid "Update"
-msgstr "Güncelle"
+msgstr ""
 
 #: templates/post/entry_detail.html:20
 msgid "Delete"
-msgstr "Sil"
+msgstr ""
 
 #: templates/post/entry_detail.html:43
-msgid "Blog template built for"
-msgstr "Blog taslağı hazırlandı"
+msgid "Blog template built for "
+msgstr ""
 
-#: templates/post/entry_detail.html:43 templates/post/entry_list.html:15
-msgid "by"
-msgstr "tarafından"
+#: templates/post/entry_detail.html:43
+msgid "by "
+msgstr ""
 
 #: templates/post/entry_detail.html:45
 msgid "Back to top"
-msgstr "Başa dön"
+msgstr ""
 
 #: templates/post/entry_list.html:3 templates/post/entry_list.html.py:7
 msgid "News"
-msgstr "Haberler"
+msgstr ""
 
 #: templates/post/entry_list.html:8
 msgid "The address of information"
-msgstr "Bilginin adresi"
+msgstr ""
 
 #: templates/post/entry_list.html:15
 msgid "Published at:"
-msgstr "Yayın tarihi:"
+msgstr ""
+
+#: templates/post/entry_list.html:15
+msgid "by"
+msgstr ""
 
 #: templates/post/entry_list.html:24
 msgid "No entry is available."
-msgstr "İleti yok."
+msgstr ""
 
 #: templates/post/entry_update.html:3 templates/post/entry_update.html.py:7
 msgid "Update Entry"
-msgstr "İleti Güncelle"
+msgstr ""
 
 #: templates/post/login.html:10 templates/post/login.html.py:19
 #: templates/post/login.html:24
 msgid "Log in"
-msgstr "Giriş"
+msgstr ""
 
 #: templates/post/login.html:20
 msgid "username"
-msgstr "kullanıcı adı"
+msgstr ""
 
 #: templates/post/login.html:22
 msgid "Password"
-msgstr "Şifre"
+msgstr ""
