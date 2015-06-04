@@ -10,7 +10,7 @@ from django.core.exceptions import PermissionDenied
 from django.contrib import auth
 from django.core.context_processors import csrf
 from django.template.defaultfilters import slugify
-from django.core.urlresolvers import reverse_lazy
+from django.core.urlresolvers import reverse_lazy,reverse
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 from .models import Entry
@@ -18,16 +18,17 @@ from .forms import EntryCreateForm, EntryUpdateForm
 
 
 def custom_login(request, *args, **kwargs):
-    c = {}
-    c.update(csrf(request))
+    c = csrf(request)
     messages.success(request, _("You are successfully logged in"))
     return render_to_response('post/login.html', c)
+
 
 def custom_logout(request):
     logout(request)
     messages.success(
         request, _("You have logged out successfully."))
-    return HttpResponseRedirect("/")
+    return HttpResponseRedirect(reverse("base"))
+
 
 def auth_view(request):
     username = request.POST.get('username' , '')
@@ -36,46 +37,39 @@ def auth_view(request):
 
     if user is not None:
        auth.login(request, user)
-       return HttpResponseRedirect("/")
+       return HttpResponseRedirect(reverse("base"))
     else:
-       return HttpResponseRedirect("login/")
+       return HttpResponseRedirect(reverse("login"))
 
 
 class EntryCreateView(CreateView):
     model = Entry
     form_class = EntryCreateForm
     template_name = "post/entry_create.html"
-    success_url = reverse_lazy("index")
 
     @method_decorator(login_required)
-    def dispatch(self, *args, **kwargs):
-        return super(EntryCreateView, self).dispatch(*args, **kwargs)
+    def dispatch(self, request, *args, **kwargs):
+        return super(EntryCreateView, self).dispatch(request, *args, **kwargs)
 
-    def get(self, request, *args, **kwargs):
-        form = self.form_class(initial=self.initial)
-        return render(request, self.template_name, {'form' : form})
+    def form_valid(self, form):
 
-    def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST, request.FILES)
-
-        if form.is_valid() and not Entry.objects.all().filter(title=form.instance.title):
+        if not Entry.objects.all().filter(title = form.instance.title):
             instance = form.instance
             instance.author = self.request.user
             instance.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect(reverse("base"))
         else:
             messages.error(self.request, _("Invalid title"))
-            return HttpResponseRedirect("")
-        return render(request, self.template_name, {'form' : form})
+            return HttpResponseRedirect(reverse("create"))
 
 
-class EntryView(ListView):
+class EntryListView(ListView):
     model = Entry
     initial = {'key' : 'value'}
     template_name="post/entry_list.html"
 
     def get_context_data(self,**kwargs):
-        context = super(EntryView, self).get_context_data(**kwargs)
+        context = super(EntryListView, self).get_context_data(**kwargs)
         context['latest_entry_list'] = Entry.objects.order_by('-pub_date')
         return context
 
@@ -107,7 +101,6 @@ class EntryUpdateView(UpdateView):
             return HttpResponseRedirect("")
 
 
-
 class EntryDeleteView(DeleteView):
     model = Entry
     success_url = reverse_lazy('base')
@@ -117,6 +110,3 @@ class EntryDeleteView(DeleteView):
         if self.request.user != self.get_object().author:
             raise PermissionDenied
         return super(EntryDeleteView, self).dispatch(*args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        return super(EntryDeleteView, self).delete(request, *args, **kwargs)

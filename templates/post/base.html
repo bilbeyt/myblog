@@ -22,7 +22,7 @@
       <div class="container">
         <nav class="blog-nav">
           <a class="blog-nav-item active" href="{% url 'base' %}">{% trans "Home" %}</a>
-          <a class="blog-nav-item active" href="{% url 'index' %}">{% trans "New Post" %}</a>
+          <a class="blog-nav-item active" href="{% url 'create' %}">{% trans "New Post" %}</a>
           <a style="float:right;" class="blog-nav-item active" id="language-button" href="">{% trans "Türkçe" %}</a>
           {% if user.is_anonymous %}
           <a style="float:right" class="blog-nav-item active" href="{% url 'login' %}">{% trans "Login" %}</a>
