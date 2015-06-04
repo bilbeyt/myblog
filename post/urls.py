@@ -1,15 +1,15 @@
 from django.conf.urls import url
 from post.views import EntryUpdateView,custom_login,custom_logout,\
-EntryDetailView,EntryDeleteView,EntryCreateView,EntryView
+EntryDetailView,EntryDeleteView,EntryCreateView,EntryListView
 from .models import Entry
 from . import views
 
 
 urlpatterns = [
-    url(r'^$', EntryView.as_view(), name="base"),
-    url(r'^index/',
+    url(r'^$', EntryListView.as_view(), name="base"),
+    url(r'^create/',
         EntryCreateView.as_view(),
-        name="index"),
+        name="create"),
     url(r'login/$',
         views.custom_login ,
         {'next_page':'base'},
