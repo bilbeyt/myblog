@@ -11,7 +11,7 @@
    {% csrf_token %}
    <br>
    <div class="alert alert-info">
-    {% trans "You are about to delete" %} {{object.title}}. {% trans "Are you sure?" %}
+    {% trans "You are about to delete" %} {{ object.title }}. {% trans "Are you sure?" %}
    </div>
     {% buttons %}
    <button type="submit" class="btn btn-primary">{% trans "Confirm" %}</button>
